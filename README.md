@@ -2,7 +2,7 @@
 
 A tiny search engine built from scratch in **Python + C**, running on a CPU-only laptop, with a Y2K-style web interface.
 
-**Live demo:** _add your Render link here_
+**Live demo:** https://glitterglass.onrender.com/
 
 ## What it does
 
