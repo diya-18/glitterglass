@@ -1,0 +1,4 @@
+# The index stores exact byte positions of each line, so line endings must never change.
+*.tsv -text
+*.npy binary
+*.pkl binary

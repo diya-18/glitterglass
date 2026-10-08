@@ -1,0 +1,21 @@
+# environment and caches
+.venv/
+__pycache__/
+*.pyc
+
+# compiled kernels (Docker builds its own on Linux)
+*.dll
+*.so
+
+# runtime data
+guestbook.jsonl
+slang_source.backup.tsv
+*.zip
+
+# big raw data and anything not meant for the repo
+data/*
+!data/mini.tsv
+!data/movies.tsv
+indexes/*
+!indexes/mini/
+!indexes/movies/

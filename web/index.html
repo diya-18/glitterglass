@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="pastel"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>glitterglass ✦ search</title>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<script>try{var s=localStorage.getItem('gg-skin');if(s)document.documentElement.dataset.skin=s;var t=localStorage.getItem('gg-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+:root{--c1:#2f6bff;--c2:#19d3f0;--c3:#7ee21f;--c4:#ffb81c;--c5:#ff5a36;--c6:#9b5cff;
+ --bg1:#e6f3ff;--bg2:#f1eaff;--bg3:#eaffef;--dot:#9bb8ff;--win:rgba(255,255,255,.78);--ink:#14214a;--sub:#4a5a8a;
+ --edge:#fff;--bar1:#2fd0ee;--bar2:#2f5bff;--shadow:#9b5cff;--input:#fff;--chip:#fff}
+[data-theme=dark]{--c1:#4d8bff;--c2:#2ff0ff;--c3:#9dff3b;--c4:#ffd23b;--c5:#ff6a4a;--c6:#b27cff;
+ --bg1:#070a22;--bg2:#120a33;--bg3:#06182a;--dot:#6a7cff;--win:rgba(20,26,70,.82);--ink:#eaf0ff;--sub:#a3b1e8;
+ --edge:#3b4cc4;--bar1:#8a4bff;--bar2:#2f5bff;--shadow:#19d3f0;--input:#0d1236;--chip:#1a2260}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font:500 16px/1.5 Quicksand,"Trebuchet MS",sans-serif;
+ background:radial-gradient(var(--dot) 1.2px,transparent 1.6px) 0 0/34px 34px,linear-gradient(150deg,var(--bg1),var(--bg2) 55%,var(--bg3));background-attachment:fixed;transition:background .3s,color .3s}
+.stripe{height:10px;background:linear-gradient(90deg,var(--c5),var(--c4),var(--c3),var(--c2),var(--c1),var(--c6))}
+.tick{overflow:hidden;white-space:nowrap;background:var(--ink);color:var(--bg1);font-weight:700;font-size:13px;padding:3px 0}
+.tick span{display:inline-block;padding-left:100%;animation:tick 28s linear infinite}
+@keyframes tick{to{transform:translateX(-100%)}}
+main{max-width:780px;margin:0 auto;padding:20px 16px 60px;position:relative}
+#theme{position:absolute;right:16px;top:20px;width:46px;height:46px;border-radius:50%;border:3px solid var(--edge);cursor:pointer;font-size:22px;line-height:1;
+ background:radial-gradient(circle at 35% 30%,#fff 0 10%,var(--c4) 45%,var(--c5));box-shadow:0 0 0 2px var(--c5),0 4px 0 var(--shadow);padding:0}
+[data-theme=dark] #theme{background:radial-gradient(circle at 35% 30%,#fff 0 10%,var(--c2) 45%,var(--c6));box-shadow:0 0 0 2px var(--c6),0 4px 0 var(--shadow)}
+#theme:active{transform:translateY(3px)}
+.logo{font:400 clamp(46px,12vw,92px)/1 "Bagel Fat One","Arial Black",sans-serif;text-align:center;margin:34px 0 4px;letter-spacing:1px}
+.logo span{display:inline-block;-webkit-text-stroke:3px var(--edge);paint-order:stroke fill;filter:drop-shadow(0 4px 0 rgba(20,33,74,.28))}
+[data-theme=dark] .logo span{filter:drop-shadow(0 0 10px currentColor)}
+.tag{text-align:center;margin:0 0 22px;font-weight:700;color:var(--sub)}
+.win{background:var(--win);backdrop-filter:blur(6px);border:3px solid var(--edge);border-radius:16px;box-shadow:0 0 0 2px var(--c1),7px 7px 0 var(--shadow);overflow:hidden;margin-bottom:20px}
+.bar{display:flex;align-items:center;gap:8px;padding:5px 12px;color:#fff;font-weight:700;background:linear-gradient(180deg,var(--bar1),var(--bar2));text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.bar i{margin-left:auto;display:flex;gap:6px}
+.bar b{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 -2px 3px rgba(0,0,0,.25)}
+.bar b:nth-child(1){background:var(--c4)}.bar b:nth-child(2){background:var(--c3)}.bar b:nth-child(3){background:var(--c5)}
+.body{padding:16px}
+form{display:flex;gap:10px}
+input{flex:1;min-width:0;font:inherit;font-size:18px;padding:12px 20px;border-radius:999px;color:var(--ink);border:3px solid var(--edge);outline:0;background:var(--input);box-shadow:inset 0 3px 8px rgba(47,91,255,.22),0 0 0 2px var(--c2)}
+input:focus-visible{box-shadow:inset 0 3px 8px rgba(47,91,255,.22),0 0 0 4px var(--c4)}
+.go{font:700 17px Quicksand,sans-serif;padding:0 24px;border-radius:999px;border:3px solid var(--edge);color:#fff;cursor:pointer;text-shadow:0 1px 0 rgba(0,0,0,.35);
+ background:linear-gradient(180deg,#8fe9ff 0%,var(--c2) 18%,var(--c1) 52%,#5a2fe0 100%);box-shadow:0 0 0 2px var(--c1),0 4px 0 #1b2f9c}
+.go:active{transform:translateY(3px);box-shadow:0 0 0 2px var(--c1),0 1px 0 #1b2f9c}
+button:focus-visible,a:focus-visible{outline:3px solid var(--c4);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips a{padding:4px 14px;border-radius:999px;background:var(--chip);border:2px solid var(--c1);color:var(--ink);cursor:pointer;font-size:14px;font-weight:700}
+.chips a:nth-child(2){border-color:var(--c3)}.chips a:nth-child(3){border-color:var(--c4)}.chips a:nth-child(4){border-color:var(--c5)}.chips a:nth-child(5){border-color:var(--c6)}
+.chips a:hover{background:var(--c4);color:#14214a}
+#stat{margin:4px 6px 14px;font-weight:700}
+.hit .body{display:flex;gap:14px}
+.rank{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#14214a;font-weight:700;border:3px solid var(--edge);box-shadow:inset 0 -3px 4px rgba(0,0,0,.18)}
+.hit p{margin:0 0 4px}.sc{font-size:13px;color:var(--sub)}
+mark{background:linear-gradient(transparent 50%,var(--c4) 50%);color:inherit;border-radius:3px;font-weight:700}
+.foot{text-align:center;font-size:13px;color:var(--sub)}
+.foot span{display:inline-block;background:#10143a;color:var(--c3);font-family:monospace;padding:2px 8px;border:2px inset #8a95d6;margin:0 4px}
+.spark{position:fixed;pointer-events:none;font-size:17px;animation:fall .9s forwards;z-index:9}
+@keyframes fall{to{transform:translateY(40px) rotate(120deg) scale(.2);opacity:0}}
+@media(max-width:480px){.go{padding:0 15px}form{gap:6px}#theme{top:12px;right:10px;width:40px;height:40px}}
+@media(prefers-reduced-motion:reduce){.spark{display:none}.tick span{animation:none;padding-left:0}}
+[hidden]{display:none!important}
+.tab{font:700 15px Quicksand,sans-serif;padding:6px 18px;border-radius:999px;border:3px solid var(--edge);background:var(--chip);color:var(--ink);cursor:pointer;box-shadow:0 0 0 2px var(--c2)}
+.tab.on{background:var(--c4);color:#14214a;box-shadow:0 0 0 2px var(--c5)}
+.seg{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.skybox{position:relative;border-radius:14px;border:3px solid var(--edge);overflow:hidden;box-shadow:inset 0 0 40px rgba(0,0,0,.5);
+ background:radial-gradient(#fff .8px,transparent 1.3px) 0 0/61px 61px,radial-gradient(ellipse at 18% 12%,#2b1c63,transparent 55%),radial-gradient(ellipse at 88% 85%,#0c4262,transparent 50%),#050818}
+.skybox svg{display:block;width:100%;height:auto}
+.lines line{stroke:rgba(255,255,255,.2);stroke-width:1}
+.star{cursor:pointer;outline:none}.star text{fill:rgba(255,255,255,.8);font:600 14px Quicksand,sans-serif;pointer-events:none}
+.star .core{animation:tw 3.6s ease-in-out var(--d) infinite;transform-box:fill-box;transform-origin:center}
+@keyframes tw{50%{opacity:.45}}
+.star:hover .core,.star:focus-visible .core{opacity:1;animation:none;transform:scale(1.7)}
+.star:focus-visible .core{stroke:var(--c4);stroke-width:2}
+.ring{fill:none;stroke:var(--c4);stroke-width:2;stroke-dasharray:4 4;animation:spin 8s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+#tip{position:absolute;max-width:220px;padding:6px 10px;border-radius:10px;font-size:14px;color:#fff;background:rgba(8,10,36,.94);border:1px solid rgba(255,255,255,.3);pointer-events:none;z-index:3}
+.idx{column-width:220px;column-gap:30px}.idx h3{margin:12px 0 4px;font:700 20px Quicksand,sans-serif;color:var(--c1);border-bottom:2px solid var(--c1);break-after:avoid}
+.idx ul{margin:0;padding:0}.idx li{list-style:none;margin:0 0 6px;break-inside:avoid}
+#sg{flex-wrap:wrap}#sg input{flex:1 1 180px}
+.lnkb{font:inherit;font-weight:700;background:none;border:0;padding:0;color:var(--c1);text-decoration:underline;cursor:pointer}
+@media(prefers-reduced-motion:reduce){.star .core,.ring{animation:none}}
+.orb{position:absolute;left:16px;top:20px;width:54px;height:54px;padding:3px;border:0;border-radius:50%;background:none;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 0 10px rgba(120,150,255,.65))}
+.orb::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--c1),var(--c2),var(--c3),var(--c4),var(--c5),var(--c6),var(--c1));animation:spin 8s linear infinite}
+.orb svg{position:relative;display:block;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 30% 25%,#2b1c63,#050818 72%)}
+.orb::after{content:"the sky";position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:5px;font:700 11px Quicksand,sans-serif;color:var(--sub);white-space:nowrap}
+.orb:hover{transform:scale(1.08) rotate(-4deg)}.orb:active{transform:scale(.96)}
+.orb .s{animation:tw 3s ease-in-out infinite}
+.orb[aria-expanded=true]::before{animation-duration:2.5s}
+@media(max-width:480px){.orb{left:10px;top:12px;width:44px;height:44px}}
+@media(prefers-reduced-motion:reduce){.orb::before,.orb .s{animation:none}}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.gp{display:inline-block;padding:0 9px;margin:0 5px 4px 0;border-radius:999px;border:2px solid var(--c1);font-size:12px;font-weight:700}
+.core{transition:transform .25s}.star.ping .core{transform:scale(2.2);opacity:1;animation:none}
+[data-skin=pastel]{--c1:#7c8cf8;--c2:#7fddc8;--c3:#9fdf8f;--c4:#ffe48a;--c5:#ffb48a;--c6:#c4a8ff;--bg1:#f5f7ff;--bg2:#f2edff;--bg3:#eefbf6;--dot:#cdd4ff;--win:rgba(255,255,255,.88);--ink:#2b3157;--sub:#656b96;--edge:#fff;--bar1:#e3e7ff;--bar2:#cbd3ff;--shadow:#d9d0ff;--input:#fff;--chip:#fff;--outline:#2b3157;--link:#4553d4}
+[data-skin=pastel][data-theme=dark]{--c1:#9aa8ff;--c2:#7fe3cf;--c3:#a6e3a1;--c4:#ffe58a;--c5:#ffb48a;--c6:#c4a8ff;--bg1:#14162e;--bg2:#1c1840;--bg3:#112a31;--dot:#3b4390;--win:rgba(30,34,72,.88);--ink:#eef0ff;--sub:#aab1e2;--edge:#3d4586;--bar1:#3a4290;--bar2:#2e3578;--shadow:#232857;--input:#0f1230;--chip:#222752;--outline:#0b0d24;--link:#aab6ff}
+[data-skin=pastel] .win{border-width:2px;border-radius:20px;box-shadow:0 0 0 1.5px var(--c1),0 10px 28px rgba(120,130,230,.16)}
+[data-skin=pastel] .bar{color:var(--ink);text-shadow:none}
+[data-skin=pastel] .logo span{-webkit-text-stroke:2px var(--outline);filter:drop-shadow(0 3px 0 rgba(43,49,87,.14))}
+[data-skin=pastel][data-theme=dark] .logo span{filter:drop-shadow(0 0 8px currentColor)}
+[data-skin=pastel] .go{color:#232a57;text-shadow:0 1px 0 rgba(255,255,255,.6);background:linear-gradient(180deg,#eef1ff 0%,#bcc6ff 50%,#93a1fb 52%,#b3beff 100%);box-shadow:0 0 0 2px #8f9dfa,0 4px 0 #6f7df0}
+[data-skin=pastel][data-theme=dark] .go{color:#10143a}
+[data-skin=pastel] .stripe{height:6px}
+[data-skin=pastel] .tick{background:var(--chip);color:var(--sub)}
+[data-skin=aero]{--c1:#1e9bf0;--c2:#22d1e8;--c3:#55c93a;--c4:#ffd84a;--c5:#ff8f3a;--c6:#5b7cfa;--bg1:#dff4ff;--bg2:#c9ecff;--bg3:#e4ffe2;--dot:#fff;--win:rgba(255,255,255,.62);--ink:#0d2f4f;--sub:#2c5f86;--edge:rgba(255,255,255,.92);--bar1:#52c5ff;--bar2:#0d6fc4;--shadow:rgba(0,110,190,.28);--input:rgba(255,255,255,.96);--chip:rgba(255,255,255,.85);--outline:#0d3b66;--link:#0a64b4}
+[data-skin=aero][data-theme=dark]{--c1:#37b2ff;--c2:#35e0f2;--c3:#6fdc50;--c4:#ffd84a;--c5:#ff9a4d;--c6:#7d96ff;--bg1:#041a33;--bg2:#06324f;--bg3:#08382f;--dot:#3d9fd8;--win:rgba(8,40,70,.68);--ink:#e6f6ff;--sub:#9fd0ee;--edge:rgba(120,210,255,.5);--bar1:#2aa8f0;--bar2:#0a5aa8;--shadow:rgba(0,0,0,.45);--input:rgba(5,28,50,.92);--chip:rgba(14,60,100,.78);--outline:#021224;--link:#7fd0ff}
+[data-skin=aero] body{background:radial-gradient(circle at 12% 16%,rgba(255,255,255,.8) 0 64px,transparent 66px),radial-gradient(circle at 90% 26%,rgba(255,255,255,.5) 0 110px,transparent 112px),radial-gradient(circle at 72% 88%,rgba(255,255,255,.45) 0 90px,transparent 92px),radial-gradient(circle at 30% 70%,rgba(255,255,255,.35) 0 40px,transparent 42px),linear-gradient(180deg,#8fd8ff 0%,#d6f2ff 45%,#d9ffd4 100%);background-attachment:fixed}
+[data-skin=aero][data-theme=dark] body{background:radial-gradient(circle at 12% 16%,rgba(120,210,255,.16) 0 64px,transparent 66px),radial-gradient(circle at 90% 26%,rgba(120,210,255,.1) 0 110px,transparent 112px),radial-gradient(circle at 72% 88%,rgba(120,255,200,.09) 0 90px,transparent 92px),linear-gradient(180deg,#031428 0%,#06324f 55%,#08382f 100%);background-attachment:fixed}
+[data-skin=aero] .win{border:2px solid var(--edge);border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 10px 30px var(--shadow),inset 0 1px 0 rgba(255,255,255,.7)}
+[data-skin=aero] .bar{background:linear-gradient(180deg,#4fb8f5 0%,#1783db 48%,#0b5fb0 52%,#1a8be0 100%);color:#fff;text-shadow:0 1px 2px rgba(0,40,100,.75)}
+[data-skin=aero] .logo span{-webkit-text-stroke:2px var(--outline);filter:drop-shadow(0 3px 0 rgba(13,59,102,.25))}
+[data-skin=aero][data-theme=dark] .logo span{filter:drop-shadow(0 0 8px currentColor)}
+[data-skin=aero] .go{color:#0a3a05;text-shadow:0 1px 0 rgba(255,255,255,.6);background:linear-gradient(180deg,#d4ffb3 0%,#7be05a 48%,#3fb52a 52%,#86e668 100%);box-shadow:0 0 0 2px #2fa51e,0 4px 0 #1f7a14}
+[data-skin=aero] .stripe{background:linear-gradient(90deg,#37b2ff,#22d1e8,#55c93a)}
+[data-skin=aero] .tick{background:rgba(13,111,196,.92);color:#fff}
+[data-skin] .lnkb,[data-skin] .idx h3{color:var(--link)}
+#skinb{position:absolute;right:70px;top:20px;width:46px;height:46px;padding:0;border-radius:50%;border:3px solid var(--edge);cursor:pointer;background:conic-gradient(var(--c1),var(--c2),var(--c3),var(--c4),var(--c5),var(--c6),var(--c1));box-shadow:0 0 0 2px var(--c1),0 4px 0 var(--shadow)}
+#skinb::after{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--win);box-shadow:inset 0 0 0 2px var(--edge)}
+#skinb:active{transform:translateY(3px)}
+@media(max-width:480px){#skinb{right:56px;top:12px;width:40px;height:40px}}
+</style></head><body>
+<div class="stripe"></div>
+<div class="tick"><span>✦ welcome to glitterglass ✦ searching 100,000 passages with C-powered BM25 ✦ press / to jump to the search box ✦ now with themes ✦ best viewed at 1024×768 ✦</span></div>
+<main>
+<button id="theme" aria-label="Switch between light and dark theme" title="Light / dark">☀</button>
+<button id="skinb" aria-label="Change style" title="Change style"></button>
+<button id="skyb" class="orb" aria-expanded="false" aria-label="Open the sky: names and notes people left" title="the sky"><svg viewBox="0 0 48 48" aria-hidden="true">
+<polyline points="10,33 18,17 31,23 38,36 25,38 10,33" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<circle class="s" cx="10" cy="33" r="1.8" fill="#cfe4ff"/>
+<circle class="s" style="animation-delay:.7s" cx="18" cy="17" r="2.2" fill="#fff4d6"/>
+<path class="s" style="animation-delay:1.4s" d="M31 17.5 32.4 21.6 36.5 23 32.4 24.4 31 28.5 29.6 24.4 25.5 23 29.6 21.6Z" fill="#fff"/>
+<circle class="s" style="animation-delay:2.1s" cx="38" cy="36" r="1.8" fill="#c9ffe9"/>
+<circle class="s" style="animation-delay:.3s" cx="25" cy="38" r="2" fill="#e0d4ff"/>
+</svg></button>
+<h1 class="logo" id="logo">glitterglass</h1>
+<p class="tag">search the whole passage pile in a blink</p>
+<section class="win"><div class="bar">✦ find stuff.exe<i><b></b><b></b><b></b></i></div><div class="body">
+<div class="tabs" id="modes" role="tablist" hidden><button type="button" class="tab on" id="m1" role="tab" aria-selected="true">Passages</button><button type="button" class="tab" id="m2" role="tab" aria-selected="false">Movies</button><button type="button" class="tab" id="m3" role="tab" aria-selected="false" hidden>Lingo</button></div>
+<form id="f"><input id="q" placeholder="ask me anything…" autocomplete="off" aria-label="Search" autofocus><button class="go">Search!</button></form>
+<div class="chips" id="pchips"><a tabindex="0">what is the manhattan project</a><a tabindex="0">how do volcanoes form</a><a tabindex="0">cost of living</a><a tabindex="0">symptoms of dehydration</a><a tabindex="0" id="rnd">surprise me ✦</a></div>
+<div class="chips" id="mchips" hidden><a tabindex="0">a shark terrorizes a beach town</a><a tabindex="0">a robot left alone cleaning up earth</a><a tabindex="0">heist crew plans to rob a casino</a><a tabindex="0">toys come alive when humans leave</a></div>
+<div class="chips" id="schips" hidden><a tabindex="0">larping</a><a tabindex="0">no cap</a><a tabindex="0">rizz</a><a tabindex="0">touch grass</a><a tabindex="0" id="srnd">random term ✦</a></div>
+</div></section>
+<section class="win" id="sky" hidden><div class="bar">✦ the sky.exe<i><b></b><b></b><b></b></i></div><div class="body">
+<div class="seg"><button type="button" class="tab on" id="vSky">Sky</button><button type="button" class="tab" id="vIdx">Index</button><button type="button" class="tab" id="vSnd" aria-pressed="false">🔕 chimes off</button><button type="button" class="tab" id="vPlay" hidden>▶ play the sky</button><span class="sc" id="skycount"></span></div>
+<div id="skyv"></div>
+<form id="sg" style="margin-top:14px"><input type="text" id="sn" maxlength="40" placeholder="your name or nickname" aria-label="Your name"><input type="text" id="sm" maxlength="140" placeholder="a few words (optional)" aria-label="Message"><button class="go" style="height:46px">Add my star ✦</button></form>
+<p id="se" class="sc" role="alert"></p><p class="sc">Names and notes are public, so skip anything private.</p></div></section>
+<div id="stat" aria-live="polite"></div><div id="res"></div>
+<p class="foot">you are visitor no. <span id="vis">000042</span> ✦ Love, don't judge, its just a mini engine.</p>
+</main>
+<script>
+const $=s=>document.querySelector(s),esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const COL=['--c1','--c5','--c4','--c3','--c2','--c6'];
+$('#logo').innerHTML=[...'glitterglass'].map((c,i)=>`<span style="color:var(${COL[i%6]})">${c}</span>`).join('');
+function setTheme(t){document.documentElement.dataset.theme=t;$('#theme').textContent=t==='dark'?'☾':'☀';try{localStorage.setItem('gg-theme',t)}catch(e){}}
+let saved=null;try{saved=localStorage.getItem('gg-theme')}catch(e){}
+setTheme(saved||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+$('#theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+async function go(q){
+  q=q.trim();if(!q)return;$('#q').value=q;$('#stat').textContent='searching… ✦';
+  try{
+    const r=await (await fetch('/search?q='+encodeURIComponent(q)+'&k=10')).json();
+    const w=[...new Set(q.toLowerCase().match(/[a-z0-9]+/g)||[])].filter(x=>x.length>2);
+    const re=w.length?new RegExp('\\b('+w.join('|')+')\\w*','gi'):null;
+    $('#stat').textContent=r.hits.length?`✦ ${r.hits.length} results in ${r.ms} ms, out of ${r.total_docs.toLocaleString()} passages ✦`:(r.people&&r.people.length?'No passages match, but someone signed that name ✦':'No matches. Try simpler words or fewer of them.');
+    $('#res').innerHTML=peopleCard(r.people)+r.hits.map((h,i)=>{let t=esc(h.text.slice(0,380))+(h.text.length>380?'…':'');
+      if(re)t=t.replace(re,'<mark>$&</mark>');
+      return `<article class="win hit"><div class="body"><div class="rank" style="background:var(${COL[i%6]})">${i+1}</div><div><p>${t}</p><span class="sc">relevance ${h.score} · passage #${h.id}</span></div></div></article>`}).join('');
+  }catch(e){$('#stat').textContent='Can\'t reach the server. Start it, then search again.'}
+}
+$('#f').onsubmit=e=>{e.preventDefault();go($('#q').value)};
+const pick=a=>{a.onclick=()=>go(a.textContent);a.onkeydown=e=>{if(e.key==='Enter')a.click()}};
+document.querySelectorAll('.chips a:not(#rnd):not(#skyb)').forEach(pick);
+const IDEAS=['why is the sky blue','how long to boil an egg','what causes earthquakes','who invented the telephone','average salary teacher','how do vaccines work'];
+$('#rnd').onclick=()=>go(IDEAS[Math.floor(Math.random()*IDEAS.length)]);$('#rnd').onkeydown=e=>{if(e.key==='Enter')$('#rnd').click()};
+addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()}});
+$('#vis').textContent=String(42+Math.floor(Math.random()*900)).padStart(6,'0');
+let last=0;addEventListener('pointermove',e=>{const n=Date.now();if(n-last<70)return;last=n;
+  const s=document.createElement('div');s.className='spark';s.textContent=['✦','✧','★','˚'][n%4];
+  s.style.cssText+=`left:${e.clientX}px;top:${e.clientY}px;color:var(${COL[n%6]})`;document.body.appendChild(s);setTimeout(()=>s.remove(),900)});
+let PL=[],PP=[],view='sky',SKYF=new Set();
+function hash(s){let h=2166136261;for(const c of s.toLowerCase().trim()){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function place(list){            // oldest first; each star depends only on earlier ones, so positions stay put
+  const P=[],W=800,H=560,M=36,MIN=34;
+  for(const p of list){
+    let best=null,bd=-1;
+    for(let k=0;k<30;k++){
+      const h=hash(p.name+'#'+k),x=Math.round(M+(h%1000)/1000*(W-2*M)),y=Math.round(M+(Math.floor(h/1000)%1000)/1000*(H-2*M));
+      const d=P.reduce((m,q)=>Math.min(m,Math.hypot(q.x-x,q.y-y)),1e9);
+      if(d>bd){bd=d;best={x,y}}
+      if(d>=MIN)break;
+    }
+    P.push({name:p.name,msg:p.msg,x:best.x,y:best.y});
+  }
+  return P;
+}
+function skyView(){
+  const P=place(PL),L=[],seen=new Set();PP=P;
+  P.forEach((a,i)=>{
+    const d=P.map((b,j)=>j===i?null:[Math.hypot(a.x-b.x,a.y-b.y),j]).filter(Boolean).sort((u,v)=>u[0]-v[0]);
+    d.slice(0,2).forEach(([dd,j],k)=>{if(dd<(k?90:150)){const key=Math.min(i,j)+'-'+Math.max(i,j);
+      if(!seen.has(key)){seen.add(key);L.push(`<line x1="${a.x}" y1="${a.y}" x2="${P[j].x}" y2="${P[j].y}"/>`)}}})});
+  const TONE=['#fff4d6','#cfe4ff','#c9ffe9','#e0d4ff'];
+  const S=P.map((a,i)=>{const h=hash(a.name),r=3+h%3,c=TONE[h%4],hit=SKYF.has(a.name.toLowerCase());
+    return `<g class="star${hit?' hit':''}" tabindex="0" data-i="${i}" style="--d:${(h%40)/10}s" role="img" aria-label="${esc(a.name)}${a.msg?': '+esc(a.msg):''}">${hit?`<circle class="ring" cx="${a.x}" cy="${a.y}" r="15"/>`:''}<circle cx="${a.x}" cy="${a.y}" r="22" fill="transparent"/><circle class="core" cx="${a.x}" cy="${a.y}" r="${r}" fill="${c}" style="filter:drop-shadow(0 0 5px ${c})"/>${(hit||P.length<=40)?`<text x="${a.x+r+6}" y="${a.y+4}">${esc(a.name)}</text>`:''}</g>`}).join('');
+  return `<div class="skybox"><svg viewBox="0 0 800 560" role="group" aria-label="Constellation of signed names"><g class="lines">${L.join('')}</g>${S}</svg><div id="tip" hidden></div></div>`}
+function indexView(list){
+  const g={};list.slice().sort((a,b)=>a.name.localeCompare(b.name)).forEach(p=>{const k=(p.name[0]||'#').toUpperCase();(g[k]=g[k]||[]).push(p)});
+  return `<div class="idx">${Object.keys(g).sort().map(k=>`<h3>${esc(k)}</h3><ul>${g[k].map(p=>`<li><b>${esc(p.name)}</b>${p.msg?' — '+esc(p.msg):''}</li>`).join('')}</ul>`).join('')}</div>`}
+function renderSky(){
+  $('#vSky').classList.toggle('on',view==='sky');$('#vIdx').classList.toggle('on',view==='index');
+  $('#skycount').textContent=`${PL.length} ${PL.length===1?'star':'stars'}`;$('#vPlay').hidden=!(SND&&view==='sky'&&PL.length>0);
+  $('#skyv').innerHTML=!PL.length?'<p class="sc">The sky is empty. Add the first star below.</p>':view==='sky'?skyView():indexView(PL)}
+async function loadSky(){
+  try{PL=(await (await fetch('/people?q=&limit=150')).json()).matches.slice().reverse();renderSky()}
+  catch(e){$('#skyv').innerHTML="<p class='sc'>Can't reach the server.</p>"}}
+async function openSky(focus){
+  SKYF=new Set(focus?focus.toLowerCase().split('|'):[]);$('#sky').hidden=false;$('#skyb').setAttribute('aria-expanded','true');await loadSky();
+  $('#sky').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
+function peopleCard(list){
+  if(!list||!list.length)return '';
+  return `<article class="win"><div class="bar">✦ from the people<i><b></b><b></b><b></b></i></div><div class="body">${list.map(p=>`<p style="margin:2px 0"><b>${esc(p.name)}</b>${p.msg?' — '+esc(p.msg):''}</p>`).join('')}<p class="sc"><button type="button" class="lnkb" data-sky="${esc(list.map(p=>p.name).join('|'))}">see ${list.length>1?'them':'it'} in the sky ✦</button></p></div></article>`}
+function showTip(g){
+  const a=PP[+g.dataset.i],t=$('#tip');if(!a||!t)return;
+  t.innerHTML=`<b>${esc(a.name)}</b>${a.msg?'<br>'+esc(a.msg):''}`;
+  t.style.left=Math.min(88,Math.max(12,a.x/8))+'%';t.style.top=(a.y/5.6)+'%';
+  t.style.transform=a.y<150?'translate(-50%,35%)':'translate(-50%,-130%)';t.hidden=false;if(g!==LS){LS=g;chime(a.name)}}
+const hideTip=()=>{LS=null;const t=$('#tip');if(t)t.hidden=true};
+document.addEventListener('pointerover',e=>{const g=e.target.closest&&e.target.closest('.star');if(g)showTip(g)});
+document.addEventListener('focusin',e=>{const g=e.target.closest&&e.target.closest('.star');if(g)showTip(g)});
+document.addEventListener('pointerout',e=>{const g=e.target.closest&&e.target.closest('.star');if(e.pointerType==='mouse'&&g&&!g.contains(e.relatedTarget))hideTip()});
+document.addEventListener('focusout',e=>{if(e.target.closest&&e.target.closest('.star'))hideTip()});
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-sky]');if(b)openSky(b.dataset.sky)});
+$('#skyb').onclick=()=>{const o=$('#sky').hidden;o?openSky():($('#sky').hidden=true);$('#skyb').setAttribute('aria-expanded',o)};
+$('#vSky').onclick=()=>{view='sky';renderSky()};$('#vIdx').onclick=()=>{view='index';renderSky()};
+$('#sg').onsubmit=async e=>{
+  e.preventDefault();$('#se').textContent='';
+  try{
+    const r=await fetch('/sign',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#sn').value,msg:$('#sm').value})});
+    const d=await r.json();if(!r.ok){$('#se').textContent=d.error||'Something went wrong.';return}
+    $('#sn').value='';$('#sm').value='';view='sky';SKYF=new Set([d.name.toLowerCase()]);loadSky()
+  }catch(err){$('#se').textContent="Can't reach the server."}};
+
+let LS=null,AC=null,OUT=null,SND=false,mode='passages';const PENT=[0,2,4,7,9];
+function audio(){
+  if(!AC){AC=new (window.AudioContext||window.webkitAudioContext)();OUT=AC.createGain();OUT.gain.value=.18;
+    const d=AC.createDelay(),fb=AC.createGain();d.delayTime.value=.3;fb.gain.value=.35;
+    OUT.connect(AC.destination);OUT.connect(d);d.connect(fb);fb.connect(d);d.connect(AC.destination)}
+  if(AC.state==='suspended')AC.resume();return AC}
+function chime(name,when){
+  if(!SND)return;const ac=audio(),h=hash(name),f=261.63*Math.pow(2,(PENT[h%5]+12*((h>>3)%2))/12),t=ac.currentTime+(when||0);
+  [[1,.5],[2.76,.12],[5.4,.05]].forEach(([m,g])=>{const o=ac.createOscillator(),e=ac.createGain();o.type='sine';o.frequency.value=f*m;
+    e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(g,t+.01);e.gain.exponentialRampToValueAtTime(.0001,t+1.6);
+    o.connect(e);e.connect(OUT);o.start(t);o.stop(t+1.7)})}
+function setSnd(on){SND=on;const b=$('#vSnd');b.textContent=on?'🔔 chimes on':'🔕 chimes off';b.setAttribute('aria-pressed',on);b.classList.toggle('on',on);if(on)audio();renderSky()}
+function playSky(){
+  if(!SND||view!=='sky'||!PP.length)return;
+  PP.map((p,i)=>i).sort((a,b)=>PP[a].x-PP[b].x).slice(0,48).forEach((i,k)=>{
+    chime(PP[i].name,k*.26);
+    setTimeout(()=>{const g=document.querySelector(`.star[data-i="${i}"]`);if(g){g.classList.add('ping');setTimeout(()=>g.classList.remove('ping'),700)}},k*260)})}
+$('#vSnd').onclick=()=>setSnd(!SND);$('#vPlay').onclick=playSky;
+fetch('/caps').then(r=>r.json()).then(c=>{$('#modes').hidden=!(c.movies||c.slang);$('#m2').hidden=!c.movies;$('#m3').hidden=!c.slang}).catch(()=>{});
+function setMode(m){mode=m;
+  [['m1','passages'],['m2','movies'],['m3','slang']].forEach(([id,k])=>{$('#'+id).classList.toggle('on',m===k);$('#'+id).setAttribute('aria-selected',m===k)});
+  $('#pchips').hidden=m!=='passages';$('#mchips').hidden=m!=='movies';$('#schips').hidden=m!=='slang';
+  $('#q').placeholder={passages:'ask me anything…',movies:'describe a scene or plot…',slang:'type a word, or what it means…'}[m];
+  $('#res').innerHTML='';$('#stat').textContent='';$('#q').focus()}
+$('#m1').onclick=()=>setMode('passages');$('#m2').onclick=()=>setMode('movies');$('#m3').onclick=()=>setMode('slang');
+async function movies(q){
+  q=q.trim();if(!q)return;$('#q').value=q;$('#stat').textContent='rolling the film reel… ✦';
+  try{
+    const r=await (await fetch('/movies?q='+encodeURIComponent(q)+'&k=8')).json();
+    const w=[...new Set(q.toLowerCase().match(/[a-z0-9]+/g)||[])].filter(x=>x.length>3);
+    const re=w.length?new RegExp('\\b('+w.join('|')+')\\w*','gi'):null;
+    $('#stat').textContent=r.hits.length?`✦ ${r.hits.length} possible films in ${r.ms} ms, out of ${r.total_docs.toLocaleString()} plots ✦`:'No films matched. Try other words from the scene.';
+    $('#res').innerHTML=r.hits.map((h,i)=>{let t=esc(h.plot);if(re)t=t.replace(re,'<mark>$&</mark>');
+      return `<article class="win hit"><div class="body"><div class="rank" style="background:var(${COL[i%6]})">${i+1}</div><div><p><b>${esc(h.title)}</b> <span class="sc">${esc(h.year)}</span></p><p>${h.genres.map(g=>`<span class="gp">${esc(g)}</span>`).join('')}</p><p>${t}</p><span class="sc">match ${h.score}</span></div></div></article>`}).join('')
+      +(r.hits.length?'<p class="foot">Plot text: CMU Movie Summary Corpus, from Wikipedia (CC BY-SA)</p>':'');
+  }catch(e){$('#stat').textContent="Can't reach the movie index."}}
+document.querySelectorAll('#mchips a').forEach(a=>{a.onclick=()=>movies(a.textContent);a.onkeydown=e=>{if(e.key==='Enter')a.click()}});
+async function slang(q){
+  q=(q||'').trim();$('#q').value=q;$('#stat').textContent='decoding… ✦';
+  try{
+    const r=await (await fetch('/slang?q='+encodeURIComponent(q)+'&k=6')).json();
+    $('#stat').textContent=r.hits.length?(q?`✦ ${r.hits.length} match${r.hits.length>1?'es':''} in ${r.ms} ms ✦`:'✦ a random one for you ✦'):'Not in the dictionary yet. Try another spelling, or describe what it means.';
+    $('#res').innerHTML=r.hits.map(h=>`<article class="win hit"><div class="bar">${esc(h.term)}${h.tag?` <span style="opacity:.85;font-weight:500">· ${esc(h.tag)}</span>`:''}</div><div class="body"><div><p>${esc(h.meaning)}</p><p class="sc">Example: “${esc(h.usage)}”</p></div></div></article>`).join('')
+      +(r.hits.length?'<p class="foot">Hand-written definitions, and slang drifts fast. Add your own in slang_source.tsv.</p>':'');
+  }catch(e){$('#stat').textContent="Can't reach the dictionary."}}
+document.querySelectorAll('#schips a').forEach(a=>{a.onclick=()=>slang(a.id==='srnd'?'':a.textContent);a.onkeydown=e=>{if(e.key==='Enter')a.click()}});
+$('#f').onsubmit=e=>{e.preventDefault();const v=$('#q').value;mode==='movies'?movies(v):mode==='slang'?slang(v):go(v)};
+const SKINS=['pastel','aero'],skinNow=()=>document.documentElement.dataset.skin;
+function setSkin(s){document.documentElement.dataset.skin=s;const n=SKINS[(SKINS.indexOf(s)+1)%SKINS.length],b=$('#skinb');
+  b.title='Style: '+s+' (click for '+n+')';b.setAttribute('aria-label','Change style. Current: '+s+', next: '+n);try{localStorage.setItem('gg-skin',s)}catch(e){}}
+let sk0=null;try{sk0=localStorage.getItem('gg-skin')}catch(e){}
+setSkin(SKINS.includes(sk0)?sk0:'pastel');
+$('#skinb').onclick=()=>setSkin(SKINS[(SKINS.indexOf(skinNow())+1)%SKINS.length]);
+</script></body></html>
