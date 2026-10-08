@@ -9,7 +9,7 @@ idx, tsv = sys.argv[1], sys.argv[2]
 port = int(sys.argv[3]) if len(sys.argv) > 3 else int(os.environ.get("PORT", 8080))
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 PAGE = os.path.join(ROOT, "web", "index.html")
-SEED = os.path.join(ROOT, "people.tsv")                       # permanent names: name<TAB>message
+SEED = os.path.join(ROOT, "content", "people.tsv")                       # permanent names: name<TAB>message
 GB = os.environ.get("GUESTBOOK_FILE", os.path.join(ROOT, "guestbook.jsonl"))
 S = Searcher(idx, tsv)
 MIDX, MTSV = os.path.join(ROOT, "indexes", "movies"), os.path.join(ROOT, "data", "movies.tsv")
@@ -41,7 +41,7 @@ def snippet(plot, q):            # the sentence(s) of the plot that best match t
 def norm(s): return " ".join(re.findall(r"[a-z0-9]+", s.lower()))
 SLANG, IDF = [], {}
 def load_slang():
-    path = os.path.join(ROOT, "slang_source.tsv")
+    path = os.path.join(ROOT, "content", "slang_source.tsv")
     if not os.path.exists(path): return
     df = {}
     for ln in open(path, encoding="utf8"):

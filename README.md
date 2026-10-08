@@ -35,11 +35,11 @@ python -m searchengine.indexer data\mini.tsv indexes\mini 4
 python -m searchengine.server indexes\mini data\mini.tsv 8080
 ```
 
-Open http://127.0.0.1:8080. Building the passage and movie data from the raw downloads is done with `build_movies.py` and the indexer; the raw files are not stored in this repo.
+Open http://127.0.0.1:8080. Building the passage and movie data from the raw downloads is done with `tools/build_movies.py` and the indexer; the raw files are not stored in this repo.
 
 ## Deploy
 
-The `Dockerfile` compiles the C kernel on Linux and starts the server, which reads the `PORT` variable. On Render, create a **Web Service** from this repo with the **Docker** runtime. Free instances sleep after inactivity, and guestbook signatures made online are lost when the service redeploys. Names in `people.tsv` are permanent.
+The `Dockerfile` compiles the C kernel on Linux and starts the server, which reads the `PORT` variable. On Render, create a **Web Service** from this repo with the **Docker** runtime. Free instances sleep after inactivity, and guestbook signatures made online are lost when the service redeploys. Names in `content/people.tsv` are permanent.
 
 ## Limits
 
